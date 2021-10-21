@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Header, ListItem, Avatar } from 'react-native-elements';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AddContactScreen from './AddContact';
+import EditContactScreen from './EditContact';
 
 function ContactsScreen({ navigation }) {
     const Stack = createNativeStackNavigator();
@@ -22,6 +23,7 @@ function ContactsScreen({ navigation }) {
     return (
       <View>
         <Stack.Screen name="AddContact" component={AddContactScreen} />       
+        <Stack.Screen name="EditContact" component={EditContactScreen} /> 
         <Header
           placement="top"
           leftComponent={{ icon: 'chevron-left', color: '#fff', onPress: () => navigation.goBack() }}
@@ -31,12 +33,15 @@ function ContactsScreen({ navigation }) {
 
         <View>
           {list.map((l, i) => (
-              <ListItem key={i} bottomDivider>
+              <ListItem 
+                key={i} bottomDivider
+                onPress={()=>navigation.navigate('EditContact')}>
                 <Avatar source={{uri: l.avatar_url}} />
                 <ListItem.Content>
                   <ListItem.Title>{l.name}</ListItem.Title>
                   <ListItem.Subtitle>{l.subtitle}</ListItem.Subtitle>
                 </ListItem.Content>
+                <ListItem.Chevron/>
               </ListItem>
             ))
           }

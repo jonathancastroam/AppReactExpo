@@ -5,6 +5,7 @@ import LoginScreen from './screens/Login';
 import ContactsScreen from './screens/Contacts';
 import RegistrationScreen from './screens/Registration';
 import AddContactScreen from './screens/AddContact';
+import EditContactScreen from './screens/EditContact';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ function MyStack() {
       <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="Save" component={ContactsScreen} />
       <Stack.Screen name="AddContact" component={AddContactScreen} />
+      <Stack.Screen name="EditContact" component={EditContactScreen} />
     </Stack.Navigator>
   );
 }
