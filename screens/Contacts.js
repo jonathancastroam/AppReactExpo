@@ -24,7 +24,7 @@ function ContactsScreen({ navigation }) {
         <Stack.Screen name="AddContact" component={AddContactScreen} />       
         <Header
           placement="top"
-          leftComponent={{ icon: 'menu', color: '#fff', onPress: () => navigation.goBack() }}
+          leftComponent={{ icon: 'chevron-left', color: '#fff', onPress: () => navigation.goBack() }}
           centerComponent={{ text: 'Lista de contatos', style: { color: '#fff' } }}
           rightComponent={{ icon: 'add', color: '#fff', onPress: () => navigation.navigate('AddContact') }}
         />

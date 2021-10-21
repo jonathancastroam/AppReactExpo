@@ -13,9 +13,8 @@ function RegistrationScreen({ navigation }) {
         
         <Header
           placement="top"
-          leftComponent={{ icon: 'menu', color: '#fff', onPress: () => navigation.goBack() }}
-          centerComponent={{ text: 'Lista de contatos', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'add', color: '#fff' }}
+          leftComponent={{ icon: 'chevron-left', color: '#fff', onPress: () => navigation.goBack() }}
+          centerComponent={{ text: 'Criar conta', style: { color: '#fff' } }}
         />
 
         <Input
