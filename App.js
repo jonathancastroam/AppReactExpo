@@ -1,71 +1,29 @@
-import React from "react";
-import {
-  Text,
-  Link,
-  HStack,
-  Center,
-  Heading,
-  Switch,
-  useColorMode,
-  NativeBaseProvider,
-  extendTheme,
-  VStack,
-  Code,
-} from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from './screens/Login';
+import ContactsScreen from './screens/Contacts';
+import RegistrationScreen from './screens/Registration';
+import AddContactScreen from './screens/AddContact';
 
-// Define the config
-const config = {
-  useSystemColorMode: false,
-  initialColorMode: "dark",
-};
+const Stack = createNativeStackNavigator();
 
-// extend the theme
-export const theme = extendTheme({ config });
-
-export default function App() {
+function MyStack() {
   return (
-    <NativeBaseProvider>
-      <Center
-        _dark={{ bg: "blueGray.900" }}
-        _light={{ bg: "blueGray.50" }}
-        px={4}
-        flex={1}
-      >
-        <VStack space={5} alignItems="center">
-          <NativeBaseIcon />
-          <Heading size="lg">Welcome to NativeBase</Heading>
-          <HStack space={2} alignItems="center">
-            <Text>Edit</Text>
-            <Code>App.js</Code>
-            <Text>and save to reload.</Text>
-          </HStack>
-          <Link href="https://docs.nativebase.io" isExternal>
-            <Text color="primary.500" underline fontSize={"xl"}>
-              Learn NativeBase
-            </Text>
-          </Link>
-          <ToggleDarkMode />
-        </VStack>
-      </Center>
-    </NativeBaseProvider>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }}/>
+      <Stack.Screen name="Contacts" component={ContactsScreen} />
+      <Stack.Screen name="Registration" component={RegistrationScreen} />
+      <Stack.Screen name="Save" component={ContactsScreen} />
+      <Stack.Screen name="AddContact" component={AddContactScreen} />
+    </Stack.Navigator>
   );
 }
 
-// Color Switch Component
-function ToggleDarkMode() {
-  const { colorMode, toggleColorMode } = useColorMode();
+export default function App() {
   return (
-    <HStack space={2} alignItems="center">
-      <Text>Dark</Text>
-      <Switch
-        isChecked={colorMode === "light" ? true : false}
-        onToggle={toggleColorMode}
-        aria-label={
-          colorMode === "light" ? "switch to dark mode" : "switch to light mode"
-        }
-      />
-      <Text>Light</Text>
-    </HStack>
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
   );
 }
